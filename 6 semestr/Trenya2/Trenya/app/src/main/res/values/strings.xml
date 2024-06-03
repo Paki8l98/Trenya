@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HarmonyFit</string>
+    <string name="choose_level">Выберите уровень</string>
+    <string name="select_exercise">Выберите упражнение</string>
+
+        <string name="title_home">Домашняя</string>
+        <string name="title_dashboard">Панель управления</string>
+        <string name="title_notifications">Уведомления</string>
+
+    <string-array name="muscle_groups_array">
+    <item>Типы тренировок</item>
+    <item>Эктоморф(Базовая)</item>
+    <item>Мезоморф(Силовая)</item>
+    <item>Эндоморф(Похудение)</item>
+    <item>Кинезоитерапия</item>
+
+
+
+</string-array>
+    <string name="default_web_client_id">YOUR_DEFAULT_WEB_CLIENT_ID</string>
+
+
+    <string-array name="activity_levels">
+        <item>Физ. нагрузка отсутствует или минимальная</item>
+        <item>Умеренная активность 3 раза в неделю</item>
+        <item>Тренировки средней интенсивности 5 раз в неделю</item>
+        <item>Интенсивные тренировки 5 раз в неделю</item>
+        <item>Ежедневные тренировки</item>
+        <item>Интенсивные тренировки каждый день</item>
+        <item>Ежедневная физ. нагрузка + физическая работа</item>
+    </string-array>
+
+    <string name="gender_prompt">Выберите пол</string>
+
+    <string name="upper_body_result">Максимальное количество повторений для верхней части тела: %.2f</string>
+        <string name="lower_body_result">Максимальное количество повторений для нижней части тела: %.2f</string>
+        <string name="invalid_input">Пожалуйста, введите корректные данные.</string>
+</resources>

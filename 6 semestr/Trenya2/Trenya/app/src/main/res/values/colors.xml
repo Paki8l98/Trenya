@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="ratingBarColor">#C9ABF3</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primaryColor">#008577</color>
+    <color name="primaryDarkColor">#00574B</color>
+    <color name="accentColor">#D81B60</color>
+    <color name="buttonTextColor">#FFFFFF</color>
+    <color name="backgroundColor">#FFFFFF</color>
+    <color name="textColor">#000000</color>
+    <color name="primaryLightColor">#BB86FC</color>
+    <color name="secondaryColor">#03DAC5</color>
+    <color name="textColorPrimary">#000000</color>
+    <color name="textColorSecondary">#666666</color>
+    <color name="dividerColor">#DDDDDD</color>
+
+
+
+</resources>

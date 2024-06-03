@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f8f8f8"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/foodTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Питание"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="14dp"
+        android:gravity="center" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/totalCaloriesLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Общая калорийность"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/totalCaloriesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp">
+
+        <TextView
+            android:id="@+id/calorieLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Норма калорий:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/calorieTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/breakfastSpinner"
+        style="@style/CustomSpinnerStyle" />
+
+    <Spinner
+        android:id="@+id/secondBreakfastSpinner"
+        style="@style/CustomSpinnerStyle" />
+
+    <Spinner
+        android:id="@+id/lunchSpinner"
+        style="@style/CustomSpinnerStyle" />
+
+    <Spinner
+        android:id="@+id/snackSpinner"
+        style="@style/CustomSpinnerStyle" />
+
+    <Spinner
+        android:id="@+id/dinnerSpinner"
+        style="@style/CustomSpinnerStyle" />
+
+    <Spinner
+        android:id="@+id/activityLevelSpinner"
+        style="@style/CustomSpinnerStyle" />
+
+    <Button
+        android:id="@+id/selectedDishesButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Выбрать"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="32dp"
+        android:background="@drawable/rounded_button"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

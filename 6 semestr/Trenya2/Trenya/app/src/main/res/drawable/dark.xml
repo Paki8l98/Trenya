@@ -1,0 +1,10 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <bitmap
+            android:src="@drawable/pngtree"
+            android:tileMode="disabled"/>
+    </item>
+    <item>
+        <color android:color="#80000000" /> <!-- Полупрозрачный черный цвет -->
+    </item>
+</layer-list>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="levels">
+        <item>Начальный</item>
+        <item>Продолжающий</item>
+        <item>Продвинутый</item>
+    </array>
+
+    <array name="muscle_groups">
+        <item>Грудные мышцы</item>
+        <item>Спина</item>
+        <item>Ноги</item>
+
+    </array>
+    <string-array name="gender_options">
+        <item>Мужской</item>
+        <item>Женский</item>
+    </string-array>
+
+
+</resources>

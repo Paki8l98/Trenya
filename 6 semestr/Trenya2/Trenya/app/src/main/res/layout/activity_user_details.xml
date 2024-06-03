@@ -1,0 +1,180 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f8f8f8"
+    android:padding="16dp"
+    tools:context=".UserDetailsActivity">
+
+    <TextView
+        android:id="@+id/instructionsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="Введите ваши данные"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/instructionsText"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/weightTextView"
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Вес:"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/weightEditText"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:hint="Вес"
+            android:textColor="@android:color/black"
+            android:textColorHint="#666"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/instructionsText"
+        android:layout_marginTop="90dp">
+
+        <TextView
+            android:id="@+id/heightTextView"
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Рост:"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/heightEditText"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:hint="Рост"
+            android:textColor="@android:color/black"
+            android:textColorHint="#666"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/instructionsText"
+        android:layout_marginTop="170dp">
+
+        <TextView
+            android:id="@+id/ageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Возраст:"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/vozrastEditText"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:hint="Возраст"
+            android:textColor="@android:color/black"
+            android:textColorHint="#666"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/instructionsText"
+        android:layout_marginTop="250dp">
+
+        <TextView
+            android:id="@+id/wristCircumferenceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Обхват запястий:"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/wristCircumferenceEditText"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:hint="Обхват запястий"
+            android:textColor="@android:color/black"
+            android:textColorHint="#666"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/genderTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/instructionsText"
+        android:layout_marginTop="330dp"
+        android:text="Пол"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:id="@+id/genderSpinner"
+        style="@style/CustomSpinnerStyle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/genderTextView"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/trainingGoalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/genderSpinner"
+        android:layout_marginTop="10dp"
+        android:text="Цель тренировки"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:id="@+id/trainingGoalSpinner"
+        style="@style/CustomSpinnerStyle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/trainingGoalTextView"
+        android:layout_marginTop="10dp"
+        />
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/trainingGoalSpinner"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:onClick="nextScreen"
+        android:paddingHorizontal="16dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/rounded_button"
+        android:text="Далее"/>
+
+</RelativeLayout>

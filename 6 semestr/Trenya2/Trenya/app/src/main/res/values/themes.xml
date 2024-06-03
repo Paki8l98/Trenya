@@ -1,0 +1,23 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#00EED2</item>
+
+        <item name="colorPrimaryDark">#00B8A9</item>
+
+        <item name="colorAccent">#FF4081</item>
+
+        <item name="android:colorForeground">#000000</item>
+
+        <item name="android:textColorSecondary">#757575</item>
+
+        <item name="android:colorControlHighlight">#80DEEA</item>
+
+        <item name="android:actionOverflowButtonStyle">@style/MyOverflowButtonStyle</item>
+    </style>
+
+    <style name="MyOverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">#FFFFFF</item>
+    </style>
+
+</resources>

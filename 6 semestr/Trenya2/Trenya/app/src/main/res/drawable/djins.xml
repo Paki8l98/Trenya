@@ -1,0 +1,7 @@
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/tonb"
+    android:tileModeX="clamp"
+    android:tileModeY="clamp"
+    android:scaleType="fitXY"
+    android:viewportWidth="500"
+    android:viewportHeight="500" />

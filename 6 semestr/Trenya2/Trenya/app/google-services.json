@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "474405421599",
+    "firebase_url": "https://trenya-cc288-default-rtdb.firebaseio.com",
+    "project_id": "trenya-cc288",
+    "storage_bucket": "trenya-cc288.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:474405421599:android:b146a3507d9ceefe1c8b2a",
+        "android_client_info": {
+          "package_name": "space.khay.trenya"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "474405421599-9fa45fo64nbate55tonn0fcoj6bnpdkb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjjxqARUoJBoI4Idta755Iqq6J3ZtwD7I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "474405421599-9fa45fo64nbate55tonn0fcoj6bnpdkb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

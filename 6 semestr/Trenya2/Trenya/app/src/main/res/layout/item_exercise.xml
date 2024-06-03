@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="450dp"
+    android:orientation="vertical"
+    android:background="@drawable/noaks_button"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/exerciseGifImage"
+        android:layout_width="match_parent"
+        android:layout_height="208dp"
+        android:layout_marginBottom="16dp"
+        android:padding="5dp"
+        android:background="@drawable/image_background"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/exerciseNameText"
+        style="@style/TitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exercise Name"/>
+
+    <TextView
+        android:id="@+id/exerciseDurationText"
+        style="@style/BodyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Duration: XX seconds"
+        android:textColor="#666"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/exerciseSetsText"
+        style="@style/BodyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sets: XX"
+        android:textColor="#666"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/exerciseRecommendationsText"
+        style="@style/BodyText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recommendations: XX"
+        android:textColor="#666"
+        android:layout_marginTop="8dp"
+        android:gravity="fill_horizontal"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/dividerColor"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>
