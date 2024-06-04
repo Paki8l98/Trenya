@@ -95,15 +95,24 @@ class PlanDetailsActivity : AppCompatActivity() {
     private fun updateStartButton(selectedItem: String) {
         startTrainingButton.setOnClickListener {
             val trainingIntent = when (selectedItem) {
-                "Мезоморф(Силовая)" -> Intent(this, TrainingActivity::class.java)
-                "Эктоморф(Базовая)" -> Intent(this, Training1Activity::class.java)
-                "Эндоморф(Похудение)" -> Intent(this, Training2Activity::class.java)
-                "Кинезоитерапия" -> Intent(this, Training3Activity::class.java)
+                "Мезоморф(Силовая)" -> Intent(this, TrainingActivity::class.java).apply {
+                    putExtra("activity_type", 0)
+                }
+                "Эктоморф(Базовая)" -> Intent(this, TrainingActivity::class.java).apply {
+                    putExtra("activity_type", 1)
+                }
+                "Эндоморф(Похудение)" -> Intent(this, TrainingActivity::class.java).apply {
+                    putExtra("activity_type", 2)
+                }
+                "Кинезоитерапия" -> Intent(this, TrainingActivity::class.java).apply {
+                    putExtra("activity_type", 3)
+                }
                 else -> null
             }
             trainingIntent?.let { startActivity(it) }
         }
     }
+
 
     private fun calculateBMI(weight: Double?, height: Double?): Double {
         return if (weight != null && height != null && height > 0) {

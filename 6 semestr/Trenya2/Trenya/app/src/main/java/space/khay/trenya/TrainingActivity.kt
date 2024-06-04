@@ -24,15 +24,18 @@ class TrainingActivity : AppCompatActivity() {
     private var totalProgress: Int = 0
     private lateinit var adapter: DayAdapter
     private lateinit var databaseReference: DatabaseReference
+    private var activityType: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_training)
 
+        activityType = intent.getIntExtra("activity_type", 0)
+
         recyclerViewDays = findViewById(R.id.recyclerViewDays)
         recyclerViewDays.layoutManager = LinearLayoutManager(this)
 
-        adapter = DayAdapter()
+        adapter = DayAdapter(activityType)
         recyclerViewDays.adapter = adapter
 
         // Инициализация базы данных Firebase
@@ -77,25 +80,59 @@ class TrainingActivity : AppCompatActivity() {
             else -> "Неизвестно"
         }
 
-        val muscleGroup = when (currentDayOfWeek) {
-            Calendar.MONDAY -> "Грудь и бицепс"
-            Calendar.TUESDAY -> "Отдых"
-            Calendar.WEDNESDAY -> "Спина и трицепс"
-            Calendar.THURSDAY -> "Отдых"
-            Calendar.FRIDAY -> "Ноги и плечи"
+        val muscleGroup = when (activityType) {
+            0 -> {
+                when (currentDayOfWeek) {
+                    Calendar.MONDAY -> "Грудь и бицепс"
+                    Calendar.TUESDAY -> "Отдых"
+                    Calendar.WEDNESDAY -> "Спина и трицепс"
+                    Calendar.THURSDAY -> "Отдых"
+                    Calendar.FRIDAY -> "Ноги и плечи"
+                    else -> "Отдых"
+                }
+            }
+            1 -> {
+                when (currentDayOfWeek) {
+                    Calendar.MONDAY -> "Новичок"
+                    Calendar.TUESDAY -> "Отдых"
+                    Calendar.WEDNESDAY -> "Новичок"
+                    Calendar.THURSDAY -> "Отдых"
+                    Calendar.FRIDAY -> "Новичок"
+                    else -> "Отдых"
+                }
+            }
+            2 -> {
+                when (currentDayOfWeek) {
+                    Calendar.MONDAY -> "Похудение"
+                    Calendar.TUESDAY -> "Отдых"
+                    Calendar.WEDNESDAY -> "Похудение"
+                    Calendar.THURSDAY -> "Отдых"
+                    Calendar.FRIDAY -> "Похудение"
+                    else -> "Отдых"
+                }
+            }
+            3 -> {
+                when (currentDayOfWeek) {
+                    Calendar.MONDAY -> "Кинезоитерапия"
+                    Calendar.TUESDAY -> "Отдых"
+                    Calendar.WEDNESDAY -> "Кинезоитерапия"
+                    Calendar.THURSDAY -> "Отдых"
+                    Calendar.FRIDAY -> "Кинезоитерапия"
+                    else -> "Отдых"
+                }
+            }
             else -> "Отдых"
         }
 
         return Triple(muscleGroup, dayOfWeekString, "")
     }
 
-
     private fun startExerciseActivity() {
         val intent = Intent(this, ExerciseActivity::class.java)
         startActivityForResult(intent, REQUEST_CODE_EXERCISE)
     }
 
-    inner class DayAdapter : RecyclerView.Adapter<DayAdapter.DayViewHolder>() {
+    inner class DayAdapter(private val activityType: Int) : RecyclerView.Adapter<DayAdapter.DayViewHolder>() {
 
         private var exercisesList = mutableListOf<Exercise>()
 
@@ -123,7 +160,7 @@ class TrainingActivity : AppCompatActivity() {
                 dayButton.setOnClickListener {
                     val day = adapterPosition + 1
                     val (_, _, dayOfWeekString) = getCurrentMuscleGroupAndDay(day)
-                    startTrainingActivity(day, dayOfWeekString)
+                    startTrainingActivity(day, dayOfWeekString, activityType)
                 }
             }
 
@@ -135,7 +172,8 @@ class TrainingActivity : AppCompatActivity() {
         }
 
         // Метод для обновления списка упражнений
-        fun updateExercises(exercises: List<Exercise>) {
+        fun updateExercises(exercises: List<
+                Exercise>) {
             exercisesList.clear()
             exercisesList.addAll(exercises)
             notifyDataSetChanged()
@@ -158,15 +196,20 @@ class TrainingActivity : AppCompatActivity() {
         editor.apply()
     }
 
-    private fun startTrainingActivity(day: Int, dayOfWeekString: String) {
+    private fun startTrainingActivity(day: Int, dayOfWeekString: String, activityType: Int) {
         saveSelectedDay(day)
-        val intent = Intent(this, DenTreniActivity::class.java)
+        val intent = Intent(this, when (activityType) {
+            0 -> DenTreniActivity::class.java
+            1 -> DenTreniActivity::class.java
+            2 -> DenTreniActivity::class.java
+            3 -> DenTreniActivity::class.java
+            else -> DenTreniActivity::class.java
+        })
         intent.putExtra("selected_day", day.toString())
         intent.putExtra("day_of_week_string", dayOfWeekString)
+        intent.putExtra("activity_type", activityType.toString())
         startActivityForResult(intent, REQUEST_CODE_TRAINING)
     }
-
-
 
 
     companion object {
@@ -174,4 +217,3 @@ class TrainingActivity : AppCompatActivity() {
         private const val REQUEST_CODE_EXERCISE = 1002
     }
 }
-

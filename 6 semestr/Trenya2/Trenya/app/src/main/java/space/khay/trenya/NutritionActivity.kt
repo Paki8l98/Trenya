@@ -405,8 +405,8 @@ class NutritionActivity : AppCompatActivity() {
             totalNutrition.append("\n\nОбщая калорийность превышает установленную норму.")
         }
 
-      //  val selectedDishesTextView: TextView = findViewById(R.id.selectedDishesTextView)
-     //   selectedDishesTextView.text = totalNutrition.toString()
+        //  val selectedDishesTextView: TextView = findViewById(R.id.selectedDishesTextView)
+        //   selectedDishesTextView.text = totalNutrition.toString()
     }
 
     private fun calculateTotalCalories(selectedDishes: List<String>): Int {

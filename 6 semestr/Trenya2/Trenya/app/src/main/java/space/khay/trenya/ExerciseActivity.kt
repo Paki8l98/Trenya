@@ -34,6 +34,7 @@ class ExerciseActivity : AppCompatActivity() {
     private lateinit var nextSetButton: Button
     private lateinit var exerciseWeightTextView: TextView
     private var currentSet = 1
+    private lateinit var activityType: String
 
     private var maxSets: Int = 0
 
@@ -75,6 +76,8 @@ class ExerciseActivity : AppCompatActivity() {
         } else {
             finish()
         }
+
+        activityType = intent.getStringExtra("activity_type") ?: ""
 
         val sharedPreferences: SharedPreferences = getSharedPreferences("user_data", MODE_PRIVATE)
         val trainingGoal: String? = sharedPreferences.getString("trainingGoal", "")
@@ -203,7 +206,16 @@ class ExerciseActivity : AppCompatActivity() {
             .load(currentExercise.gifPath)
             .into(exerciseImage)
 
-        val sharedPreferences: SharedPreferences = getSharedPreferences("ExercisePreferences", MODE_PRIVATE)
+        activityType = intent.getStringExtra("activity_type") ?: ""
+
+        val sharedPreferences = when (activityType) {
+            "0" -> getSharedPreferences("ExercisePreferences", MODE_PRIVATE)
+            "1" -> getSharedPreferences("ExercisePreferences_DenTreni1", MODE_PRIVATE)
+            "2" -> getSharedPreferences("ExercisePreferences_DenTreni2", MODE_PRIVATE)
+            "3" -> getSharedPreferences("ExercisePreferences_DenTreni3", MODE_PRIVATE)
+            else -> getSharedPreferences("ExercisePreferences", MODE_PRIVATE)
+        }
+
         sharedPreferences.edit().putInt("current_index", currentIndex).apply()
         val totalProgress = ((currentIndex + 1).toFloat() / exercises.size.toFloat() * 100).toInt()
         sharedPreferences.edit().putInt("total_progress", totalProgress).apply()
@@ -258,7 +270,15 @@ class ExerciseActivity : AppCompatActivity() {
 
     private fun finishActivity() {
         val totalProgress = ((currentIndex.toFloat() / exercises.size.toFloat()) * 100).toInt()
-        val sharedPreferences = getSharedPreferences("ExercisePreferences", MODE_PRIVATE)
+        activityType = intent.getStringExtra("activity_type") ?: ""
+
+        val sharedPreferences = when (activityType) {
+            "0" -> getSharedPreferences("ExercisePreferences", MODE_PRIVATE)
+            "1" -> getSharedPreferences("ExercisePreferences_DenTreni1", MODE_PRIVATE)
+            "2" -> getSharedPreferences("ExercisePreferences_DenTreni2", MODE_PRIVATE)
+            "3" -> getSharedPreferences("ExercisePreferences_DenTreni3", MODE_PRIVATE)
+            else -> getSharedPreferences("ExercisePreferences", MODE_PRIVATE)
+        }
         sharedPreferences.edit().putInt("current_index", currentIndex).apply() // Сохранение текущего индекса упражнения
         sharedPreferences.edit().putInt("total_progress", totalProgress).apply()
         val intent = Intent()

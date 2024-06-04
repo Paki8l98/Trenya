@@ -20,7 +20,9 @@ class DenTreniActivity : AppCompatActivity() {
     private lateinit var recyclerViewExercises: RecyclerView
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var databaseReference: DatabaseReference
-    private var selectedDay: String = ""
+    private lateinit var selectedDay: String
+    private lateinit var activityType: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_den_treni)
@@ -29,10 +31,19 @@ class DenTreniActivity : AppCompatActivity() {
         exerciseCountTextView = findViewById(R.id.exerciseCountTextView)
         recyclerViewExercises = findViewById(R.id.recyclerViewExercises)
 
-        sharedPreferences = getSharedPreferences("ExercisePreferences", MODE_PRIVATE)
+        // sharedPreferences = getSharedPreferences("ExercisePreferences", MODE_PRIVATE)
 
-        val selectedDay = intent.getStringExtra("selected_day")
-        val dayOfWeekString = intent.getStringExtra("day_of_week_string")
+        activityType = intent.getStringExtra("activity_type") ?: ""
+
+        sharedPreferences = when (activityType) {
+            "0" -> getSharedPreferences("ExercisePreferences", MODE_PRIVATE)
+            "1" -> getSharedPreferences("ExercisePreferences_DenTreni1", MODE_PRIVATE)
+            "2" -> getSharedPreferences("ExercisePreferences_DenTreni2", MODE_PRIVATE)
+            "3" -> getSharedPreferences("ExercisePreferences_DenTreni3", MODE_PRIVATE)
+            else -> getSharedPreferences("ExercisePreferences", MODE_PRIVATE)
+        }
+        selectedDay = intent.getStringExtra("selected_day") ?: ""
+        val dayOfWeekString = intent.getStringExtra("day_of_week_string") ?: ""
 
         if (!selectedDay.isNullOrEmpty()) {
             dayTitleTextView.text = "День $selectedDay"
@@ -57,12 +68,18 @@ class DenTreniActivity : AppCompatActivity() {
     }
 
     private fun startExerciseActivity(exercises: List<Exercise>, currentIndex: Int) {
-        val intent = Intent(this, ExerciseActivity::class.java)
+        val intent = when (activityType) {
+            "0" -> Intent(this, ExerciseActivity::class.java)
+            "1" -> Intent(this, ExerciseActivity::class.java)
+            "2" -> Intent(this, ExerciseActivity::class.java)
+            "3" -> Intent(this, ExerciseActivity::class.java)
+            else -> Intent(this, ExerciseActivity::class.java)
+        }
         intent.putParcelableArrayListExtra("exercises", ArrayList(exercises))
         intent.putExtra("current_index", currentIndex)
+        intent.putExtra("activity_type", activityType.toString())
         startActivity(intent)
     }
-
 
     private fun navigateToCustomWeekActivity() {
         val intent = Intent(this, CustomWeekActivity::class.java)
@@ -70,16 +87,40 @@ class DenTreniActivity : AppCompatActivity() {
     }
 
     private fun getExercisesForDay(selectedDay: String, dayOfWeekString: String) {
+        activityType = intent.getStringExtra("activity_type") ?: ""
         val savedExercisesJson = sharedPreferences.getString("exercises_$selectedDay", null)
         if (savedExercisesJson != null) {
             val savedExercises = Gson().fromJson(savedExercisesJson, Array<Exercise>::class.java).toList()
             displayExercises(savedExercises)
         } else {
-            val muscleGroups = mapOf(
-                "Понедельник" to listOf("Грудные мышцы", "Бицепс"),
-                "Среда" to listOf("Трицепс", "Спина"),
-                "Пятница" to listOf("Ноги", "Плечи")
-            )
+            val muscleGroups = when (activityType) {
+                "0" -> mapOf(
+                    "Понедельник" to listOf("Грудные мышцы", "Бицепс"),
+                    "Среда" to listOf("Трицепс", "Спина"),
+                    "Пятница" to listOf("Ноги", "Плечи")
+                )
+                "1" -> mapOf(
+                    "Понедельник" to listOf("Новичок"),
+                    "Среда" to listOf("Новичок"),
+                    "Пятница" to listOf("Новичок")
+                )
+                "2" -> mapOf(
+                    "Понедельник" to listOf("Похудение"),
+                    "Среда" to listOf("Похудение"),
+                    "Пятница" to listOf("Похудение")
+                )
+                "3" -> mapOf(
+                    "Понедельник" to listOf("Кинезоитерапия"),
+                    "Среда" to listOf("Кинезоитерапия"),
+                    "Пятница" to listOf("Кинезоитерапия")
+                )
+                else -> mapOf(
+                    "Понедельник" to listOf("Кинезоитерапия"),
+                    "Среда" to listOf("Кинезоитерапия"),
+                    "Пятница" to listOf("Кинезоитерапия")
+                )
+            }
+
             val selectedMuscleGroups = muscleGroups[dayOfWeekString]
             if (selectedMuscleGroups != null) {
                 databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -118,6 +159,8 @@ class DenTreniActivity : AppCompatActivity() {
         }
     }
 
+
+
     private fun displayExercises(exercises: List<Exercise>) {
         exerciseCountTextView.text = "Количество упражнений: ${exercises.size}"
         recyclerViewExercises.layoutManager = LinearLayoutManager(this@DenTreniActivity)
@@ -135,11 +178,20 @@ class DenTreniActivity : AppCompatActivity() {
 
         val continueButton: Button = findViewById(R.id.continueButton)
         continueButton.setOnClickListener {
-            val sharedPreferences = getSharedPreferences("ExercisePreferences", MODE_PRIVATE)
+            val sharedPreferences = getSharedPreferences(getSharedPreferencesName(), MODE_PRIVATE)
             val currentIndex = sharedPreferences.getInt("current_index", 0)
-
             startExerciseActivity(exercises, currentIndex)
         }
     }
 
+    private fun getSharedPreferencesName(): String {
+        activityType = intent.getStringExtra("activity_type") ?: ""
+        return when (activityType) {
+            "0" -> "ExercisePreferences"
+            "1" -> "ExercisePreferences_DenTreni1"
+            "2" -> "ExercisePreferences_DenTreni2"
+            "3" -> "ExercisePreferences_DenTreni3"
+            else -> "ExercisePreferences"
+        }
+    }
 }
