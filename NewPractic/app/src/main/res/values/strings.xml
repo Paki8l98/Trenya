@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ПогодаАльметьевск</string>
+    <string name="select_city_prompt">Выберите город</string>
+</resources>

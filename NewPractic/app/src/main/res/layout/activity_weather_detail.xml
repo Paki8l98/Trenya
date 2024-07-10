@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/city_name_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Название города"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingBottom="16dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/previous_weather_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Была:"
+        android:textSize="16sp"
+        android:paddingBottom="8dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/current_weather_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Стала:"
+        android:textSize="16sp"
+        android:paddingBottom="8dp"/>
+
+    <Button
+        android:id="@+id/go_to_weather_activity_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Погода"
+        android:layout_gravity="center"/>
+
+</LinearLayout>
